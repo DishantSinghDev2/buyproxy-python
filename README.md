@@ -1,7 +1,5 @@
 # BuyProxy Python SDK — Residential Proxy API Client (sync & async)
 
-[![PyPI](https://img.shields.io/pypi/v/buyproxy?logo=pypi&logoColor=white)](https://pypi.org/project/buyproxy/)
-[![Python](https://img.shields.io/pypi/pyversions/buyproxy)](https://pypi.org/project/buyproxy/)
 [![CI](https://github.com/DishantSinghDev2/buyproxy-python/actions/workflows/ci.yml/badge.svg)](https://github.com/DishantSinghDev2/buyproxy-python/actions/workflows/ci.yml)
 ![typed](https://img.shields.io/badge/typed-mypy%20strict-blue)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -19,9 +17,10 @@ The official **Python SDK** for [BuyProxy](https://www.buyproxy.org): generate *
 
 ## Installation
 
+The `buyproxy` package isn't on PyPI yet. Until it is, you can install it from GitHub:
+
 ```bash
-pip install buyproxy
-# or: uv add buyproxy · poetry add buyproxy
+pip install git+https://github.com/DishantSinghDev2/buyproxy-python
 ```
 
 Python 3.9+. Ships `py.typed`; passes `mypy --strict`.
@@ -34,10 +33,10 @@ from buyproxy import BuyProxy
 bp = BuyProxy()  # reads BUYPROXY_API_KEY — or BuyProxy(api_key="bp_key_…")
 
 plan = bp.plans.list()[0]
-result = bp.plans.generate(plan.id, country="US", city="Austin", count=5)
+result = bp.plans.generate(plan.id, country="US", count=5)
 
 proxy = result.proxies[0]
-print(proxy.url)  # http://user-country-us-city-austin:pass@gw.buyproxy.org:6969
+print(proxy.url)  # http://user-country-us:pass@gw.buyproxy.org:6969
 ```
 
 Pass `sticky_minutes=10` to keep the same IP for ten minutes, or `protocol="socks5"` for SOCKS5.
@@ -193,7 +192,7 @@ Create a free account at [buyproxy.org](https://www.buyproxy.org/signup), then o
 A personal key (`bp_key_…`) manages your own bandwidth: balances, plans, generating proxies, top-ups and payments. A reseller key (`bp_live_…`) manages *your customers*: create isolated sub-accounts, buy bandwidth into a pool, allocate it, suspend or reactivate, and generate proxies on their behalf.
 
 **Which proxy types are available?**
-Core Residential, Premium Residential, ISP Rotating, Mobile, Datacenter IPv4 and IPv6 — call the catalog endpoint for the live list and per-GB prices (from **$1.99/GB**).
+Core Residential, Premium Residential, ISP Rotating, Mobile, Datacenter IPv4 and IPv6 — call the catalog endpoint for the live list and per-GB prices (residential from **$0.99/GB**, IPv6 from **$0.29/GB**).
 
 **Do generated proxies expire, and when is bandwidth used?**
 Generating a proxy is free and instant; bandwidth is only consumed when traffic flows through it. Lines are on-demand — generate fresh ones rather than storing them.
