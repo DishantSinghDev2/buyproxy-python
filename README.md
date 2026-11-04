@@ -39,7 +39,7 @@ proxy = result.proxies[0]
 print(proxy.url)  # http://user-country-us:pass@gw.buyproxy.org:6969
 ```
 
-Pass `sticky_minutes=10` to keep the same IP for ten minutes, or `protocol="socks5"` for SOCKS5.
+Pass `sticky_minutes=10` for a sticky session: on Premium Residential it sets the length (3 minutes to 24 hours), and on Core Residential it turns sticky on. For SOCKS5, pass `protocol="socks5"`.
 
 **Async:**
 
