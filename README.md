@@ -6,6 +6,8 @@
 
 The official **Python SDK** for [BuyProxy](https://www.buyproxy.org): generate **residential, mobile, ISP and datacenter proxies**, check bandwidth, top up by card or crypto, and manage **reseller** customers — with a fully typed sync **and** async client built on `httpx`.
 
+> **Payments changed on 9 November 2026.** BuyProxy now sells from one prepaid wallet. The per-product top-up calls in this README (card and crypto top-ups for a product, and reseller pool top-ups) are retired: the API refuses them with a message that names the call to use. Until this SDK adds wallet methods, add money with `POST /v1/wallet/topup` and buy with `POST /v1/wallet/purchase` (resellers buy pool bandwidth with `POST /v1/pool/purchase`); see the [API reference](https://www.buyproxy.org/docs/api-reference/introduction). Plan subscriptions by card still work. The [Go SDK](https://github.com/DishantSinghDev2/buyproxy-go) has the wallet methods from v1.1.0.
+
 **Keywords:** residential proxies · rotating proxies · mobile proxies · ISP proxies · datacenter proxies · SOCKS5 · proxy API · web scraping · proxy reseller
 
 ## Features
